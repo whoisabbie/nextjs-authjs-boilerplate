@@ -1,3 +1,5 @@
 export default {
-    login: '/auth/login',
+  home: "/",
+  login: "/auth/login",
+  register: "/auth/register",
 } as const;
