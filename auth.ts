@@ -3,11 +3,12 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 
 import authConfig from "@/auth.config";
 import db from "@/lib/db";
+import routes from "@/lib/routes";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
-    signIn: "/auth/login",
-    error: "/auth/error",
+    signIn: routes.login,
+    error: routes.authError,
   },
   events: {
     async linkAccount({ user }) {
