@@ -18,6 +18,12 @@ export default auth((req) => {
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
+  // If the route is not defined in the routes object, then we don't need to do anything.
+  // This is useful for handling 404 pages.
+  if (!Object.keys(routes).includes(nextUrl.pathname)) {
+    return;
+  }
+
   if (isApiAuthRoute) {
     return;
   }
