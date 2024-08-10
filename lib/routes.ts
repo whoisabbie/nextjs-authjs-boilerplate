@@ -2,6 +2,7 @@ const routes = {
   home: "/",
   login: "/auth/login",
   register: "/auth/register",
+  authError: "/auth/error",
   settings: "/settings",
 };
 
@@ -19,7 +20,7 @@ export const publicRoutes = [routes.home, routes.login, routes.register];
  * These routes will redirect logged in users to /settings
  * @type {string[]}
  */
-export const authRoutes = [routes.login, routes.register];
+export const authRoutes = [routes.login, routes.register, routes.authError];
 
 /**
  * The prefix for the API routes.

@@ -5,6 +5,18 @@ import authConfig from "@/auth.config";
 import db from "@/lib/db";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  pages: {
+    signIn: "/auth/signin",
+    error: "/auth/error",
+  },
+  events: {
+    async linkAccount({ user }) {
+      await db.user.update({
+        where: { id: user.id },
+        data: { emailVerified: new Date() },
+      });
+    },
+  },
   callbacks: {
     jwt({ token, user }) {
       // the user object in jwt is present only when the user is logging in initially
