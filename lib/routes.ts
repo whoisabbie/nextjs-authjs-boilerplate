@@ -3,6 +3,7 @@ const routes = {
   login: "/auth/login",
   register: "/auth/register",
   authError: "/auth/error",
+  newVerification: "/auth/new-verification",
   settings: "/settings",
 };
 

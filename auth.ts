@@ -36,6 +36,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return session;
     },
+    signIn({ user, account }) {
+      // Allow OAuth without email verification
+      if (account?.provider !== "credentials") return true;
+
+      // Prevent sign in if email is not verified
+      if (!user?.emailVerified) return false;
+
+      // TODO: Add 2FA check
+
+      return true;
+    },
   },
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },

@@ -1,5 +1,5 @@
 import { type DefaultSession } from "next-auth";
-import { type UserRole, type User } from "@prisma/client";
+import { type UserRole } from "@prisma/client";
 import { type JWT as DefaultJWT } from "next-auth/jwt";
 
 declare module "next-auth/jwt" {
@@ -29,5 +29,6 @@ declare module "next-auth" {
 
   interface User {
     role?: UserRole;
+    emailVerified?: Date | null;
   }
 }
